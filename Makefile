@@ -19,9 +19,10 @@ lib: f2clib blaslib lapacklib
 
 clean: cleanlib cleantesting cleanblas_testing 
 
+# Names here are important, this is what numpy is looking for
 install: lapacklib blaslib
 	cp $(LAPACKLIB) $(WASM_SYSROOT)/lib/liblapack.a
-	cp blas$(PLAT).a $(WASM_SYSROOT)/lib/libblas.a
+	cp blas$(PLAT).a $(WASM_SYSROOT)/lib/libopenblas.a
 
 lapack_install:
 	( cd INSTALL; $(MAKE) )
