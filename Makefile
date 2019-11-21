@@ -19,8 +19,9 @@ lib: f2clib blaslib lapacklib
 
 clean: cleanlib cleantesting cleanblas_testing 
 
-install: lapacklib
+install: lapacklib blaslib
 	cp $(LAPACKLIB) $(WASM_SYSROOT)/lib/liblapack.a
+	cp blas$(PLAT).a $(WASM_SYSROOT)/lib/libblas.a
 
 lapack_install:
 	( cd INSTALL; $(MAKE) )
