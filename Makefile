@@ -4,24 +4,23 @@
 #  June 2009
 #
 
-THIS_ROOT=$(abspath .)
-FAASM_ROOT=$(THIS_ROOT)/../..
+TOPDIR=$(abspath .)
+FAASM_ROOT=$(TOPDIR)/../..
 include $(FAASM_ROOT)/toolchain/Makefile.envs
 
 include make.inc
 
-all: f2clib lapack_install lib lapack_testing blas_testing
+all: f2clib lapack_install lib 
 #all: f2clib lapack_install lib lapack_testing blas_testing variants_testing
 
 #lib: lapacklib tmglib
 #lib: f2clib lapacklib tmglib
-lib: f2clib blaslib variants lapacklib tmglib
+lib: f2clib blaslib lapacklib 
 
 clean: cleanlib cleantesting cleanblas_testing 
 
 lapack_install:
-	( cd INSTALL; $(MAKE); ./testlsame; ./testslamch; \
-	  ./testdlamch; ./testsecond; ./testdsecnd; ./testversion )
+	( cd INSTALL; $(MAKE) )
 
 blaslib:
 	( cd BLAS/SRC; $(MAKE) )

@@ -6,7 +6,7 @@ LD=$(WASM_LD)
 LDSHARED=$(WASM_LDSHARED)
 LDFLAGS=--stack-first -ldlmalloc
 
-CFLAGS=-O3 --sysroot=$(WASM_SYSROOT) -msimd128 -munimplemented-simd128
+CFLAGS=-O3 -I$(TOPDIR)/INCLUDE --sysroot=$(WASM_SYSROOT) -msimd128 -munimplemented-simd128 -ldlmalloc
 CXXFLAGS=$(CFLAGS)
 
 SHELL = /bin/sh

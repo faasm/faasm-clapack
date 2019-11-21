@@ -1,2 +1,11 @@
 *.a
 *.o
+
+INSTALL/testdlamch
+INSTALL/testdsecnd
+INSTALL/testieee
+INSTALL/testlsame
+INSTALL/testsecond
+INSTALL/testslamch
+INSTALL/testversion
+
