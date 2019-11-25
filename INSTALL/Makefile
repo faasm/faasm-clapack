@@ -1,36 +1,39 @@
 TOPDIR=..
 include $(TOPDIR)/make.inc
-F2CLIB       = $(TOPDIR)/F2CLIBS/libf2c.a
-THIS_LIBS=-lm -ldlmalloc
+F2CLIB = $(TOPDIR)/F2CLIBS/libf2c.so
 
 .SUFFIXES : .o .c 
 all:  testlsame testslamch testdlamch testsecond testdsecnd testieee testversion 
 
 testlsame:  lsame.o lsametst.o
-	$(CC) $(LOADOPTS)   -o testlsame lsame.o lsametst.o $(F2CLIB) $(THIS_LIBS)
+	$(CC) $(LDFLAGS) -o testlsame lsame.o lsametst.o $(F2CLIB) 
 
 testslamch: slamch.o lsame.o slamchtst.o
-	$(CC) $(LOADOPTS)   -o testslamch slamch.o lsame.o slamchtst.o $(F2CLIB) $(THIS_LIBS)
+	$(CC) $(LDFLAGS) -o testslamch slamch.o lsame.o slamchtst.o $(F2CLIB) 
 
 testdlamch: dlamch.o lsame.o dlamchtst.o
-	$(CC) $(LOADOPTS)   -o testdlamch dlamch.o lsame.o dlamchtst.o $(F2CLIB) $(THIS_LIBS)
+	$(CC) $(LDFLAGS) -o testdlamch dlamch.o lsame.o dlamchtst.o $(F2CLIB) 
 
 testsecond: second.o secondtst.o
-	$(CC) $(LOADOPTS)   -o testsecond second.o secondtst.o $(F2CLIB) $(THIS_LIBS)
+	$(CC) $(LDFLAGS) -o testsecond second.o secondtst.o $(F2CLIB) 
 
 testdsecnd: dsecnd.o dsecndtst.o
-	$(CC) $(LOADOPTS)   -o testdsecnd dsecnd.o dsecndtst.o $(F2CLIB) $(THIS_LIBS)
+	$(CC) $(LDFLAGS) -o testdsecnd dsecnd.o dsecndtst.o $(F2CLIB) 
 
 testieee: tstiee.o
-	$(CC) $(LOADOPTS)   -o testieee tstiee.o $(F2CLIB) $(THIS_LIBS)
+	$(CC) $(LDFLAGS) -o testieee tstiee.o $(F2CLIB) 
 
 testversion: ilaver.o LAPACK_version.o
-	    $(CC) $(LOADOPTS)   -o testversion ilaver.o LAPACK_version.o $(F2CLIB) $(THIS_LIBS)
+	$(CC) $(LDFLAGS) -o testversion ilaver.o LAPACK_version.o $(F2CLIB) 
 
 clean:
 	rm -f *.o
 
-slamch.o: slamch.c ; $(CC) $(NOOPT) -c $< -o $@
-dlamch.o: dlamch.c ; $(CC) $(NOOPT) -c $< -o $@
+#slamch.o: slamch.c 
+#	$(CC) -fPIC $(NOOPT) -c $< -o $@
+#dlamch.o: dlamch.c
+#	$(CC) -fPIC $(NOOPT) -c $< -o $@
 
-.c.o: ; $(CC) $(CFLAGS) -c $< -o $@
+.c.o: 
+	$(CC) $(CFLAGS) -c $< -o $@
+

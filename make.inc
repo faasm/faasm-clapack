@@ -3,11 +3,10 @@ CXX=$(WASM_CXX)
 CPP=$(WASM_CPP)
 NM=$(WASM_NM)
 LD=$(WASM_LD)
-LDSHARED=$(WASM_LDSHARED)
-LDFLAGS=--stack-first -ldlmalloc
 
-CFLAGS=-O3 -I$(TOPDIR)/INCLUDE --sysroot=$(WASM_SYSROOT) -msimd128 -munimplemented-simd128 -ldlmalloc
-CXXFLAGS=$(CFLAGS)
+_FLAGS=--sysroot=$(WASM_SYSROOT) -Xlinker --no-entry -Wno-unused-command-line-argument -nostdlib
+LDFLAGS=$(_FLAGS) -Xlinker --stack-first -Xlinker --shared -Xlinker --export-all
+CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE -msimd128 -munimplemented-simd128 -fPIC --target=wasm32-unknown-emscripten 
 
 SHELL = /bin/sh
 
@@ -26,13 +25,15 @@ ARCH     = $(AR)
 ARCHFLAGS= cr
 RANLIB   = $(WASM_RANLIB)
 
-CBLASLIB      = ../cblas$(PLAT).a
-BLASLIB      = ../../blas$(PLAT).a
+CBLASLIB      = ../cblas$(PLAT).so
+BLASLIB      = ../../blas$(PLAT).so
 
 XBLASLIB     =
 
-LAPACKLIB    = lapack$(PLAT).a
-F2CLIB       = ../../F2CLIBS/libf2c.a
+LAPACKLIB    = lapack$(PLAT).so
+F2CLIB       = ../../F2CLIBS/libf2c.so
+
+# Not used in our case
 TMGLIB       = tmglib$(PLAT).a
 EIGSRCLIB    = eigsrc$(PLAT).a
 LINSRCLIB    = linsrc$(PLAT).a

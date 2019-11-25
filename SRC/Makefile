@@ -369,8 +369,9 @@ ALLOBJ=$(SLASRC) $(DLASRC) $(CLASRC) $(ZLASRC) $(SCLAUX) $(DZLAUX)	\
 	$(ALLAUX)
 
 ../$(LAPACKLIB): $(ALLOBJ) $(ALLXOBJ)
-	$(ARCH) $(ARCHFLAGS) $@ $(ALLOBJ) $(ALLXOBJ)
-	$(RANLIB) $@
+	$(CC) $(LDFLAGS) $(ALLOBJ) $(ALLXOBJ) -o $@
+	#$(ARCH) $(ARCHFLAGS) $@ $(ALLOBJ) $(ALLXOBJ)
+	#$(RANLIB) $@
 
 single: $(SLASRC) $(ALLAUX) $(SCLAUX) 
 	$(ARCH) $(ARCHFLAGS) ../$(LAPACKLIB) $(SLASRC) $(ALLAUX) \
@@ -416,10 +417,10 @@ clean:
 .c.o: 
 	$(CC) $(CFLAGS) -c $<
 
-slaruv.o: slaruv.c ; $(CC) $(NOOPT)  -c $< -o $@
-dlaruv.o: dlaruv.c ; $(CC) $(NOOPT)  -c $< -o $@
-sla_wwaddw.o: sla_wwaddw.c ; $(CC) $(NOOPT)  -c $< -o $@
-dla_wwaddw.o: dla_wwaddw.c ; $(CC) $(NOOPT)  -c $< -o $@
-cla_wwaddw.o: cla_wwaddw.c ; $(CC) $(NOOPT)  -c $< -o $@
-zla_wwaddw.o: zla_wwaddw.c ; $(CC) $(NOOPT)  -c $< -o $@
+#slaruv.o: slaruv.c ; $(CC) $(NOOPT)  -c $< -o $@
+#dlaruv.o: dlaruv.c ; $(CC) $(NOOPT)  -c $< -o $@
+#sla_wwaddw.o: sla_wwaddw.c ; $(CC) $(NOOPT)  -c $< -o $@
+#dla_wwaddw.o: dla_wwaddw.c ; $(CC) $(NOOPT)  -c $< -o $@
+#cla_wwaddw.o: cla_wwaddw.c ; $(CC) $(NOOPT)  -c $< -o $@
+#zla_wwaddw.o: zla_wwaddw.c ; $(CC) $(NOOPT)  -c $< -o $@
 

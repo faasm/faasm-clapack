@@ -70,7 +70,7 @@ TIME =	dtime_.o etime_.o
 OFILES = $(MISC) $(POW) $(CX) $(DCX) $(REAL) $(DBL) $(INT) \
 	$(HALF) $(CMP) $(EFL) $(CHAR) $(I77) $(TIME)
 
-all: f2c.h signal1.h sysdep1.h libf2c.a clapack_install
+all: f2c.h signal1.h sysdep1.h libf2c.so clapack_install
 
 libf2c.a: $(OFILES)
 	$(AR) r libf2c.a $?
@@ -83,7 +83,7 @@ libf2c.a: $(OFILES)
 ## of "cc -shared".
 
 libf2c.so: $(OFILES)
-	$(CC) -shared -o libf2c.so $(OFILES)
+	$(CC) $(LDFLAGS) -shared -o libf2c.so $(OFILES)
 
 ### If your system lacks ranlib, you don't need it; see README.
 
@@ -119,14 +119,14 @@ sysdep1.h: sysdep1.h0
 #	$(CC) -c -Donexit=on_exit -DSkip_f2c_Undefs main.c
 
 install: libf2c.a
-	cp libf2c.a $(LIBDIR)
+	cp libf2c.so $(LIBDIR)
 #	$(RANLIB) $(LIBDIR)/libf2c.a
 
-clapack_install: libf2c.a
-	mv libf2c.a ..
+clapack_install: libf2c.so
+	mv libf2c.so ..
 
 clean:
-	rm -f libf2c.a *.o arith.h signal1.h sysdep1.h
+	rm -f libf2c.a libf2c.so *.o arith.h signal1.h sysdep1.h
 
 backspac.o:	fio.h
 close.o:	fio.h
@@ -183,8 +183,8 @@ xwsne.o:	lio.h
 xwsne.o:	fmt.h
 
 arith.h: arithchk.c
-	$(CC) $(CFLAGS) -DNO_FPINIT arithchk.c -lm ||\
-	 $(CC) -DNO_LONG_LONG $(CFLAGS) -DNO_FPINIT arithchk.c -lm
+	$(CC) $(CFLAGS) -DNO_FPINIT arithchk.c ||\
+	 $(CC) -DNO_LONG_LONG $(CFLAGS) -DNO_FPINIT arithchk.c 
 	touch arith.h
 #	./a.out >arith.h
 	rm -f a.out arithchk.o

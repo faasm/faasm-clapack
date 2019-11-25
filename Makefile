@@ -20,10 +20,10 @@ lib: f2clib blaslib cblaslib lapacklib
 clean: cleanlib cleantesting cleanblas_testing 
 
 install: 
-	cp $(LAPACKLIB) $(WASM_SYSROOT)/lib/liblapack.a
-	cp blas$(PLAT).a $(WASM_SYSROOT)/lib/libblas.a
-	cp cblas$(PLAT).a $(WASM_SYSROOT)/lib/libcblas.a
-	cp F2CLIBS/libf2c.a $(WASM_SYSROOT)/lib/libf2c.a
+	cp $(LAPACKLIB) $(WASM_SYSROOT)/lib/liblapack.so
+	cp blas$(PLAT).so $(WASM_SYSROOT)/lib/libblas.so
+	cp cblas$(PLAT).so $(WASM_SYSROOT)/lib/libcblas.so
+	cp F2CLIBS/libf2c.so $(WASM_SYSROOT)/lib/libf2c.so
 	mkdir -p $(WASM_SYSROOT)/include/clapack
 	cp INCLUDE/* $(WASM_SYSROOT)/include/clapack/
 	cp cblas/cblas.h $(WASM_SYSROOT)/include/clapack/
@@ -43,7 +43,7 @@ cblaswrap:
 fblaswrap: 
 	( cd BLAS/WRAP; $(MAKE) libfblaswr.a; cp libfblaswr.a ../.. )
 
-lapacklib:	lapack_install
+lapacklib: lapack_install
 	( cd SRC; $(MAKE) )
 
 variants:
