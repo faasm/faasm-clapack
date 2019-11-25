@@ -26,7 +26,8 @@ ARCH     = $(AR)
 ARCHFLAGS= cr
 RANLIB   = $(WASM_RANLIB)
 
-BLASLIB      = ../blas$(PLAT).a
+CBLASLIB      = ../cblas$(PLAT).a
+BLASLIB      = ../../blas$(PLAT).a
 
 XBLASLIB     =
 

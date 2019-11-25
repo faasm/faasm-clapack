@@ -4,9 +4,9 @@ include $(TOPDIR)/make.inc
 SRCS = $(wildcard *.c)
 OBJS = $(patsubst %.c,%.o,$(SRCS))
 
-all: $(BLASLIB)
+all: $(CBLASLIB)
 
-$(BLASLIB): $(OBJS)
+$(CBLASLIB): $(OBJS)
 	$(ARCH) $(ARCHFLAGS) $@ $(OBJS)
 	$(RANLIB) $@
 
