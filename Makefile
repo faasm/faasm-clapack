@@ -4,6 +4,12 @@
 #  June 2009
 #
 
+# ------------------------------------------------------
+# I've hacked this to build cblas instead of the normal reference BLAS
+# As a result you can ONLY build cblaslib OR blaslib as they both
+# write an archive to the same location. 
+# ------------------------------------------------------
+
 TOPDIR=$(abspath .)
 FAASM_ROOT=$(TOPDIR)/../..
 include $(FAASM_ROOT)/toolchain/Makefile.envs
@@ -20,7 +26,7 @@ lib: f2clib cblaslib lapacklib
 clean: cleanlib cleantesting cleanblas_testing 
 
 # Names here are important, this is what numpy is looking for
-install: lapacklib blaslib
+install: 
 	cp $(LAPACKLIB) $(WASM_SYSROOT)/lib/liblapack.a
 	cp blas$(PLAT).a $(WASM_SYSROOT)/lib/blas.a
 	cp F2CLIBS/libf2c.a $(WASM_SYSROOT)/lib/libf2c.a
