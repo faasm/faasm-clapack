@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int ssymm_(char *side, char *uplo, integer *m, integer *n, 
 	real *alpha, real *a, integer *lda, real *b, integer *ldb, real *beta,

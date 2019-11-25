@@ -5,9 +5,17 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-/* Subroutine */ int zgemm_(char *transa, char *transb, integer *m, integer *
+void cblas_zgemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA,
+                 const enum CBLAS_TRANSPOSE TransB, const int M, const int N,
+                 const int K, const void *alpha, const void *A,
+                 const int lda, const void *B, const int ldb,
+                 const void *beta, void *C, const int ldc) {
+    inner_zgemm(&TransA, &TransB, &M, &N, &K, alpha, A, &lda, B, &ldb, beta, C, &ldc);
+}
+
+/* Subroutine */ int inner_zgemm(char *transa, char *transb, integer *m, integer *
 	n, integer *k, doublecomplex *alpha, doublecomplex *a, integer *lda, 
 	doublecomplex *b, integer *ldb, doublecomplex *beta, doublecomplex *c,
 	 integer *ldc)

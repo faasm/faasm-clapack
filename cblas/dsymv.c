@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int dsymv_(char *uplo, integer *n, doublereal *alpha, 
 	doublereal *a, integer *lda, doublereal *x, integer *incx, doublereal 

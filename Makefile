@@ -30,6 +30,9 @@ install:
 	cp $(LAPACKLIB) $(WASM_SYSROOT)/lib/liblapack.a
 	cp blas$(PLAT).a $(WASM_SYSROOT)/lib/libblas.a
 	cp F2CLIBS/libf2c.a $(WASM_SYSROOT)/lib/libf2c.a
+	mkdir -p $(WASM_SYSROOT)/include/clapack
+	cp INCLUDE/* $(WASM_SYSROOT)/include/clapack/
+	cp cblas/cblas.h $(WASM_SYSROOT)/include/clapack/
 
 lapack_install:
 	( cd INSTALL; $(MAKE) )

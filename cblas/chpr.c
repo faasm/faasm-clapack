@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int chpr_(char *uplo, integer *n, real *alpha, complex *x, 
 	integer *incx, complex *ap)

@@ -4,7 +4,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int crotg_(complex *ca, complex *cb, real *c, complex *s)
 {

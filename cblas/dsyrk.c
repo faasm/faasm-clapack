@@ -5,9 +5,16 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-/* Subroutine */ int dsyrk_(char *uplo, char *trans, integer *n, integer *k, 
+void cblas_dsyrk(const enum CBLAS_ORDER Order, const enum CBLAS_UPLO Uplo,
+                 const enum CBLAS_TRANSPOSE Trans, const int N, const int K,
+                 const double alpha, const double *A, const int lda,
+                 const double beta, double *C, const int ldc) {
+    inner_dsyrk(&Uplo, &Trans, &N, &K, &alpha, A, &lda, &beta, C, &ldc);
+}
+
+/* Subroutine */ int inner_dsyrk(char *uplo, char *trans, integer *n, integer *k,
 	doublereal *alpha, doublereal *a, integer *lda, doublereal *beta, 
 	doublereal *c, integer *ldc)
 {

@@ -5,9 +5,18 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-/* Subroutine */ int sgemm_(char *transa, char *transb, integer *m, integer *
+void cblas_sgemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA,
+                 const enum CBLAS_TRANSPOSE TransB, const int M, const int N,
+                 const int K, const float alpha, const float *A,
+                 const int lda, const float *B, const int ldb,
+                 const float beta, float *C, const int ldc) {
+    // Not sure what order is used for here but not present in the fortran interface
+    inner_sgemm(&TransA, &TransB, &M, &N, &K, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
+}
+
+/* Subroutine */ int inner_sgemm(char *transa, char *transb, integer *m, integer *
 	n, integer *k, real *alpha, real *a, integer *lda, real *b, integer *
 	ldb, real *beta, real *c, integer *ldc)
 {

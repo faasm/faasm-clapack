@@ -4,7 +4,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Double Complex */ VOID zdotu_(doublecomplex * ret_val, integer *n, 
 	doublecomplex *zx, integer *incx, doublecomplex *zy, integer *incy)

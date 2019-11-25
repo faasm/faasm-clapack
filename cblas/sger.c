@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int sger_(integer *m, integer *n, real *alpha, real *x, 
 	integer *incx, real *y, integer *incy, real *a, integer *lda)

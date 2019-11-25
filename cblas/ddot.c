@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 doublereal ddot_(integer *n, doublereal *dx, integer *incx, doublereal *dy, 
 	integer *incy)
@@ -96,3 +96,7 @@ L60:
     return ret_val;
 } /* ddot_ */
 
+double cblas_ddot(const int N, const double *X, const int incX,
+                  const double *Y, const int incY) {
+    return ddot_(&N, X, &incX, Y, &incY);
+}

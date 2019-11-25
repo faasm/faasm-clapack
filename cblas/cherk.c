@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int cherk_(char *uplo, char *trans, integer *n, integer *k, 
 	real *alpha, complex *a, integer *lda, real *beta, complex *c, 

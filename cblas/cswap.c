@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int cswap_(integer *n, complex *cx, integer *incx, complex *
 	cy, integer *incy)

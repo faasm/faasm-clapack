@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int zherk_(char *uplo, char *trans, integer *n, integer *k, 
 	doublereal *alpha, doublecomplex *a, integer *lda, doublereal *beta, 

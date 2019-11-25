@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int zscal_(integer *n, doublecomplex *za, doublecomplex *zx, 
 	integer *incx)

@@ -5,9 +5,9 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-doublereal sdot_(integer *n, real *sx, integer *incx, real *sy, integer *incy)
+real sdot_(integer *n, real *sx, integer *incx, real *sy, integer *incy)
 {
 
 
@@ -95,3 +95,7 @@ L60:
     return ret_val;
 } /* sdot_ */
 
+float cblas_sdot(const int N, const float  *X, const int incX,
+                 const float  *Y, const int incY) {
+    return sdot_(&N, X, &incX, Y, &incY);
+}

@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int strmm_(char *side, char *uplo, char *transa, char *diag, 
 	integer *m, integer *n, real *alpha, real *a, integer *lda, real *b, 

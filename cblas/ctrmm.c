@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int ctrmm_(char *side, char *uplo, char *transa, char *diag, 
 	integer *m, integer *n, complex *alpha, complex *a, integer *lda, 

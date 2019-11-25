@@ -5,9 +5,14 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-/* Subroutine */ int saxpy_(integer *n, real *sa, real *sx, integer *incx, 
+void cblas_saxpy(const int N, const float alpha, const float *X,
+                 const int incX, float *Y, const int incY) {
+    inner_saxpy(&N, &alpha, X, &incX, Y, &incY);
+}
+
+/* Subroutine */ int inner_saxpy(integer *n, real *sa, real *sx, integer *incx,
 	real *sy, integer *incy)
 {
 

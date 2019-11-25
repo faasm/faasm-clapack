@@ -5,9 +5,14 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-/* Subroutine */ int zaxpy_(integer *n, doublecomplex *za, doublecomplex *zx, 
+void cblas_zaxpy(const int N, const void *alpha, const void *X,
+                 const int incX, void *Y, const int incY) {
+    inner_zaxpy(&N, alpha, X, &incX, Y, &incY);
+}
+
+/* Subroutine */ int inner_zaxpy(integer *n, doublecomplex *za, doublecomplex *zx,
 	integer *incx, doublecomplex *zy, integer *incy)
 {
 

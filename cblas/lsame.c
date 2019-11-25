@@ -4,7 +4,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 logical lsame_(char *ca, char *cb)
 {

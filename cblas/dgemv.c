@@ -5,9 +5,17 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-/* Subroutine */ int dgemv_(char *trans, integer *m, integer *n, doublereal *
+void cblas_dgemv(const enum CBLAS_ORDER Order,
+                 const enum CBLAS_TRANSPOSE TransA, const int M, const int N,
+                 const double alpha, const double *A, const int lda,
+                 const double *X, const int incX, const double beta,
+                 double *Y, const int incY) {
+    inner_dgemv(&TransA, &M, &N, &alpha, A, &lda, X, &incX, &beta, Y, &incY);
+}
+
+/* Subroutine */ int inner_dgemv(char *trans, integer *m, integer *n, doublereal *
 	alpha, doublereal *a, integer *lda, doublereal *x, integer *incx, 
 	doublereal *beta, doublereal *y, integer *incy)
 {

@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int ssyr_(char *uplo, integer *n, real *alpha, real *x, 
 	integer *incx, real *a, integer *lda)

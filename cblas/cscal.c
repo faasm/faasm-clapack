@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int cscal_(integer *n, complex *ca, complex *cx, integer *
 	incx)

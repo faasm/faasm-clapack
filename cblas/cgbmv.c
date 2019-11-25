@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int cgbmv_(char *trans, integer *m, integer *n, integer *kl, 
 	integer *ku, complex *alpha, complex *a, integer *lda, complex *x, 

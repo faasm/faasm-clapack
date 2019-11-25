@@ -1,5 +1,5 @@
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 integer icamax_(integer *n, complex *cx, integer *incx)
 {

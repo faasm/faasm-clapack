@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int cher_(char *uplo, integer *n, real *alpha, complex *x, 
 	integer *incx, complex *a, integer *lda)

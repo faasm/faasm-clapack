@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int dtpmv_(char *uplo, char *trans, char *diag, integer *n, 
 	doublereal *ap, doublereal *x, integer *incx)

@@ -5,9 +5,14 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-/* Subroutine */ int caxpy_(integer *n, complex *ca, complex *cx, integer *
+void cblas_caxpy(const int N, const void *alpha, const void *X,
+                 const int incX, void *Y, const int incY) {
+    inner_caxpy(&N, alpha, X, &incX, Y, &incY);
+}
+
+/* Subroutine */ int inner_caxpy(integer *n, complex *ca, complex *cx, integer *
 	incx, complex *cy, integer *incy)
 {
 

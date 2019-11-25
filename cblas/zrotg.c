@@ -4,7 +4,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 #define cdabs_ z_abs /*Fix to non-standard complex double abs */
 
 /* Subroutine */ int zrotg_(doublecomplex *ca, doublecomplex *cb, doublereal *

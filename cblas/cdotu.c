@@ -4,7 +4,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Complex */ VOID cdotu_(complex * ret_val, integer *n, complex *cx, integer 
 	*incx, complex *cy, integer *incy)

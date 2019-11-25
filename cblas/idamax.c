@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 integer idamax_(integer *n, doublereal *dx, integer *incx)
 {

@@ -1,5 +1,5 @@
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int xerbla_(char *srname, integer *info)
 {

@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int sspr_(char *uplo, integer *n, real *alpha, real *x, 
 	integer *incx, real *ap)

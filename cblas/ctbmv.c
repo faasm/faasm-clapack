@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int ctbmv_(char *uplo, char *trans, char *diag, integer *n, 
 	integer *k, complex *a, integer *lda, complex *x, integer *incx)

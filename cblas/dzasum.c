@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 doublereal dzasum_(integer *n, doublecomplex *zx, integer *incx)
 {

@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 /* Subroutine */ int ztpsv_(char *uplo, char *trans, char *diag, integer *n, 
 	doublecomplex *ap, doublecomplex *x, integer *incx)

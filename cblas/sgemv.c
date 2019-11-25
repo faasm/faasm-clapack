@@ -5,9 +5,17 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
-/* Subroutine */ int sgemv_(char *trans, integer *m, integer *n, real *alpha, 
+void cblas_sgemv(const enum CBLAS_ORDER Order,
+                 const enum CBLAS_TRANSPOSE TransA, const int M, const int N,
+                 const float alpha, const float *A, const int lda,
+                 const float *X, const int incX, const float beta,
+                 float *Y, const int incY) {
+    inner_sgemv(&TransA, &M, &N, &alpha, A, &lda, X, &incX, &beta, Y, &incY);
+}
+
+/* Subroutine */ int inner_sgemv(char *trans, integer *m, integer *n, real *alpha,
 	real *a, integer *lda, real *x, integer *incx, real *beta, real *y, 
 	integer *incy)
 {

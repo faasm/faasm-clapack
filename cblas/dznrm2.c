@@ -5,7 +5,7 @@
 */
 
 #include "f2c.h"
-#include "cblaswrap.h"
+#include "cblas.h"
 
 doublereal dznrm2_(integer *n, doublecomplex *x, integer *incx)
 {
