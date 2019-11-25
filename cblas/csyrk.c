@@ -11,7 +11,8 @@ void cblas_csyrk(const enum CBLAS_ORDER Order, const enum CBLAS_UPLO Uplo,
                  const enum CBLAS_TRANSPOSE Trans, const int N, const int K,
                  const void *alpha, const void *A, const int lda,
                  const void *beta, void *C, const int ldc) {
-    inner_csyrk(&Uplo, &Trans, &N, &K, alpha, A, &lda, beta, C, &ldc);
+    inner_csyrk(TO_CHAR_UPLO(Uplo), TO_CHAR_TRANSPOSE(Trans),
+            &N, &K, alpha, A, &lda, beta, C, &ldc);
 }
 
 /* Subroutine */ int inner_csyrk(char *uplo, char *trans, integer *n, integer *k,

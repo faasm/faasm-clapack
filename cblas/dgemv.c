@@ -12,7 +12,8 @@ void cblas_dgemv(const enum CBLAS_ORDER Order,
                  const double alpha, const double *A, const int lda,
                  const double *X, const int incX, const double beta,
                  double *Y, const int incY) {
-    inner_dgemv(&TransA, &M, &N, &alpha, A, &lda, X, &incX, &beta, Y, &incY);
+    inner_dgemv(TO_CHAR_TRANSPOSE(TransA),
+            &M, &N, &alpha, A, &lda, X, &incX, &beta, Y, &incY);
 }
 
 /* Subroutine */ int inner_dgemv(char *trans, integer *m, integer *n, doublereal *

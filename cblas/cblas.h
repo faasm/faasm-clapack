@@ -25,6 +25,19 @@ enum CBLAS_SIDE {
     CblasLeft = 141, CblasRight = 142
 };
 
+// Transformations - these are the reverse of those in cblaswr.c
+// From CBLAS_TRANSPOSE to char
+#define TO_CHAR_TRANSPOSE(c) (c == CblasNoTrans ? 'N' : (c == CblasTrans ? 'T' : 'C'))
+
+// From CBLAS_UPLO to char
+#define TO_CHAR_UPLO(c) (c == CblasUpper ? 'U' : 'L')
+
+// From CBLAS_DIAG to char
+#define TO_CHAR_DIAG(c) (c == CblasNonUnit ? 'N': 'U')
+
+// From CBLAS_SIDE to char
+#define TO_CHAR_SIDE(c) (c == CblasLeft ? 'L': 'R')
+
 int cblas_errprn(int ierr, int info, char *form, ...);
 
 /*

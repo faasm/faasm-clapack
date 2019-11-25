@@ -13,7 +13,8 @@ void cblas_dgemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
                  const int lda, const double *B, const int ldb,
                  const double beta, double *C, const int ldc) {
     // Not sure what order is used for here but not present in the fortran interface
-    inner_dgemm(&TransA, &TransB, &M, &N, &K, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
+    inner_dgemm(TO_CHAR_TRANSPOSE(TransA), TO_CHAR_TRANSPOSE(TransB),
+            &M, &N, &K, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
 }
 
 /* Subroutine */ int inner_dgemm(char *transa, char *transb, integer *m, integer *

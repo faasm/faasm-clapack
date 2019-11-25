@@ -12,7 +12,7 @@ void cblas_zgemv(const enum CBLAS_ORDER Order,
                  const void *alpha, const void *A, const int lda,
                  const void *X, const int incX, const void *beta,
                  void *Y, const int incY) {
-    inner_zgemv(&TransA, &M, &N, alpha, A, &lda, X, &incX, beta, Y, &incY);
+    inner_zgemv(TO_CHAR_TRANSPOSE(TransA), &M, &N, alpha, A, &lda, X, &incX, beta, Y, &incY);
 }
 
 /* Subroutine */ int inner_zgemv(char *trans, integer *m, integer *n,

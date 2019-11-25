@@ -12,7 +12,8 @@ void cblas_zgemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
                  const int K, const void *alpha, const void *A,
                  const int lda, const void *B, const int ldb,
                  const void *beta, void *C, const int ldc) {
-    inner_zgemm(&TransA, &TransB, &M, &N, &K, alpha, A, &lda, B, &ldb, beta, C, &ldc);
+    inner_zgemm(TO_CHAR_TRANSPOSE(TransA), TO_CHAR_TRANSPOSE(TransB),
+            &M, &N, &K, alpha, A, &lda, B, &ldb, beta, C, &ldc);
 }
 
 /* Subroutine */ int inner_zgemm(char *transa, char *transb, integer *m, integer *

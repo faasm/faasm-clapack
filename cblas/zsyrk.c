@@ -11,7 +11,7 @@ void cblas_zsyrk(const enum CBLAS_ORDER Order, const enum CBLAS_UPLO Uplo,
                  const enum CBLAS_TRANSPOSE Trans, const int N, const int K,
                  const void *alpha, const void *A, const int lda,
                  const void *beta, void *C, const int ldc) {
-    inner_zsyrk(&Uplo, &Trans, &N, &K, alpha, A, &lda, beta, C, &ldc);
+    inner_zsyrk(TO_CHAR_UPLO(Uplo), TO_CHAR_TRANSPOSE(Trans), &N, &K, alpha, A, &lda, beta, C, &ldc);
 }
 
 /* Subroutine */ int inner_zsyrk(char *uplo, char *trans, integer *n, integer *k,

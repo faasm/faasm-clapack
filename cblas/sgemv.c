@@ -12,7 +12,7 @@ void cblas_sgemv(const enum CBLAS_ORDER Order,
                  const float alpha, const float *A, const int lda,
                  const float *X, const int incX, const float beta,
                  float *Y, const int incY) {
-    inner_sgemv(&TransA, &M, &N, &alpha, A, &lda, X, &incX, &beta, Y, &incY);
+    inner_sgemv(TO_CHAR_TRANSPOSE(TransA), &M, &N, &alpha, A, &lda, X, &incX, &beta, Y, &incY);
 }
 
 /* Subroutine */ int inner_sgemv(char *trans, integer *m, integer *n, real *alpha,
