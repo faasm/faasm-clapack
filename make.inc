@@ -4,9 +4,9 @@ CPP=$(WASM_CPP)
 NM=$(WASM_NM)
 LD=$(WASM_LD)
 
-_FLAGS=--sysroot=$(WASM_SYSROOT) -Xlinker --no-entry -Wno-unused-command-line-argument -nostdlib
-LDFLAGS=$(_FLAGS) -Xlinker --stack-first -Xlinker --shared -Xlinker --export-all
-CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE -msimd128 -munimplemented-simd128 -fPIC --target=wasm32-unknown-emscripten 
+_FLAGS=$(WASM_CFLAGS_NO_QUOTES) -Xlinker --no-entry -nostdlib
+LDFLAGS=$(_FLAGS) -Xlinker --stack-first -Xlinker --shared
+CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE -fPIC 
 
 SHELL = /bin/sh
 

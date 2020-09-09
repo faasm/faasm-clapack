@@ -5,8 +5,8 @@
 #
 
 TOPDIR=$(abspath .)
-FAASM_ROOT=$(TOPDIR)/../..
-include $(FAASM_ROOT)/toolchain/Makefile.envs
+FAASM_ROOT=$(TOPDIR)/../faasm
+include $(FAASM_ROOT)/third-party/faasm-toolchain/Makefile.envs
 
 include make.inc
 
