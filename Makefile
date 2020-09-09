@@ -8,6 +8,9 @@ TOPDIR=$(abspath .)
 FAASM_ROOT=$(TOPDIR)/../faasm
 include $(FAASM_ROOT)/third-party/faasm-toolchain/Makefile.envs
 
+INSTALL_DIR=$(WASM_SYSROOT)/lib/wasm32-wasi
+INCLUDE_DIR=$(WASM_SYSROOT)/include
+
 include make.inc
 
 all: f2clib lapack_install lib 
@@ -20,13 +23,13 @@ lib: f2clib blaslib cblaslib lapacklib
 clean: cleanlib cleantesting cleanblas_testing 
 
 install: 
-	cp $(LAPACKLIB) $(WASM_SYSROOT)/lib/liblapack.so
-	cp blas$(PLAT).so $(WASM_SYSROOT)/lib/libblas.so
-	cp cblas$(PLAT).so $(WASM_SYSROOT)/lib/libcblas.so
-	cp F2CLIBS/libf2c.so $(WASM_SYSROOT)/lib/libf2c.so
-	mkdir -p $(WASM_SYSROOT)/include/clapack
-	cp INCLUDE/* $(WASM_SYSROOT)/include/clapack/
-	cp cblas/cblas.h $(WASM_SYSROOT)/include/clapack/
+	cp $(LAPACKLIB) $(INSTALL_DIR)/liblapack.so
+	cp blas$(PLAT).so $(INSTALL_DIR)/libblas.so
+	cp cblas$(PLAT).so $(INSTALL_DIR)/libcblas.so
+	cp F2CLIBS/libf2c.so $(INSTALL_DIR)/libf2c.so
+	mkdir -p $(INCLUDE_DIR)/clapack
+	cp INCLUDE/* $(INCLUDE_DIR)/clapack/
+	cp cblas/cblas.h $(INCLUDE_DIR)/clapack/
 
 lapack_install:
 	( cd INSTALL; $(MAKE) )
