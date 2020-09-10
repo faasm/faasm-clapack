@@ -100,7 +100,8 @@ cleanlib:
 	( cd SRC/VARIANTS; $(MAKE) clean )
 	( cd TESTING/MATGEN; $(MAKE) clean )
 	( cd F2CLIBS/libf2c; $(MAKE) clean )
-	( cd F2CLIBS; rm -f *.a)
+	( cd F2CLIBS; rm -f *.so)
+	( rm -f *.so )
 
 cleanblas_testing:	
 	( cd BLAS/TESTING; $(MAKE) -f Makeblat1 clean )

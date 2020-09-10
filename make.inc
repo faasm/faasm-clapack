@@ -4,9 +4,13 @@ CPP=$(WASM_CPP)
 NM=$(WASM_NM)
 LD=$(WASM_LD)
 
-_FLAGS=$(WASM_CFLAGS_NO_QUOTES) -Xlinker --no-entry -nostdlib
-LDFLAGS=$(_FLAGS) -Xlinker --stack-first -Xlinker --shared
-CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE -fPIC 
+# NOTE - if we want to use fPIC here, we have to specify
+# --target=wasm32-unknown-emscripten -fPIC
+# However, we want to try and compile everything as static libs
+
+_FLAGS=$(WASM_CFLAGS_NO_QUOTES) -Xlinker --no-entry -Xlinker --no-gc-sections 
+LDFLAGS=$(_FLAGS) -Xlinker --stack-first 
+CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE 
 
 SHELL = /bin/sh
 
@@ -25,13 +29,13 @@ ARCH     = $(AR)
 ARCHFLAGS= cr
 RANLIB   = $(WASM_RANLIB)
 
-CBLASLIB      = ../cblas$(PLAT).so
-BLASLIB      = ../../blas$(PLAT).so
+CBLASLIB      = ../cblas$(PLAT).a
+BLASLIB      = ../../blas$(PLAT).a
 
 XBLASLIB     =
 
-LAPACKLIB    = lapack$(PLAT).so
-F2CLIB       = ../../F2CLIBS/libf2c.so
+LAPACKLIB    = lapack$(PLAT).a
+F2CLIB       = ../../F2CLIBS/libf2c.a
 
 # Not used in our case
 TMGLIB       = tmglib$(PLAT).a
