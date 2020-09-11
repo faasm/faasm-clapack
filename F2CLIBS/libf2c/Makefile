@@ -70,7 +70,7 @@ TIME =	dtime_.o etime_.o
 OFILES = $(MISC) $(POW) $(CX) $(DCX) $(REAL) $(DBL) $(INT) \
 	$(HALF) $(CMP) $(EFL) $(CHAR) $(I77) $(TIME)
 
-all: f2c.h signal1.h sysdep1.h libf2c.so clapack_install
+all: f2c.h signal1.h sysdep1.h libf2c.a clapack_install
 
 libf2c.a: $(OFILES)
 	$(AR) r libf2c.a $?
@@ -82,6 +82,7 @@ libf2c.a: $(OFILES)
 ## Under Solaris, use -Kpic in CFLAGS and use "ld -G" instead
 ## of "cc -shared".
 
+# NOTE - we don't want to compile the shared lib for Faasm
 libf2c.so: $(OFILES)
 	$(CC) $(LDFLAGS) -shared -o libf2c.so $(OFILES)
 
@@ -119,11 +120,11 @@ sysdep1.h: sysdep1.h0
 #	$(CC) -c -Donexit=on_exit -DSkip_f2c_Undefs main.c
 
 install: libf2c.a
-	cp libf2c.so $(LIBDIR)
+	cp libf2c.a $(LIBDIR)
 #	$(RANLIB) $(LIBDIR)/libf2c.a
 
-clapack_install: libf2c.so
-	mv libf2c.so ..
+clapack_install: libf2c.a
+	mv libf2c.a ..
 
 clean:
 	rm -f libf2c.a libf2c.so *.o arith.h signal1.h sysdep1.h

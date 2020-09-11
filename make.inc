@@ -4,11 +4,9 @@ CPP=$(WASM_CPP)
 NM=$(WASM_NM)
 LD=$(WASM_LD)
 
-# NOTE - if we want to use fPIC here, we have to specify
-# --target=wasm32-unknown-emscripten -fPIC
-# However, we want to try and compile everything as static libs
+# NOTE - everything here should be compiled as static libs
 
-_FLAGS=$(WASM_CFLAGS_NO_QUOTES) -Xlinker --no-entry -Xlinker --no-gc-sections 
+_FLAGS=$(WASM_CFLAGS_NO_QUOTES) 
 LDFLAGS=$(_FLAGS) -Xlinker --stack-first 
 CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE 
 
@@ -24,12 +22,12 @@ F2CCFLAGS = $(CFLAGS)
 
 TIMER    = INT_CPU_TIME
 
-AR=$(WASM_AR)
+AR       = $(WASM_AR)
 ARCH     = $(AR)
 ARCHFLAGS= cr
 RANLIB   = $(WASM_RANLIB)
 
-CBLASLIB      = ../cblas$(PLAT).a
+CBLASLIB     = ../cblas$(PLAT).a
 BLASLIB      = ../../blas$(PLAT).a
 
 XBLASLIB     =
@@ -37,7 +35,7 @@ XBLASLIB     =
 LAPACKLIB    = lapack$(PLAT).a
 F2CLIB       = ../../F2CLIBS/libf2c.a
 
-# Not used in our case
+# Not used in Faasm
 TMGLIB       = tmglib$(PLAT).a
 EIGSRCLIB    = eigsrc$(PLAT).a
 LINSRCLIB    = linsrc$(PLAT).a
