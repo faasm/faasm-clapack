@@ -4,8 +4,7 @@ CPP=$(WASM_CPP)
 NM=$(WASM_NM)
 LD=$(WASM_LD)
 
-# NOTE - everything here should be compiled as static libs
-
+# Link flags for static libs
 _FLAGS=$(WASM_CFLAGS_NO_QUOTES) 
 LDFLAGS=$(_FLAGS) -Xlinker --stack-first 
 CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE 

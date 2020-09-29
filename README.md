@@ -1,13 +1,16 @@
-CLAPACK ported for Faasm
+# CLAPACK and BLAS Support for Faasm
 
-Code copied from http://www.netlib.org/clapack/
+Sources:
 
-The Makefiles assume this project is in the 3rd party deps of the 
-[Faasm Experiments repo](https://github.com/lsds/faasm-experiments/)
+- [CLAPACK](http://www.netlib.org/clapack/)
+- [LAPACK](https://github.com/Reference-LAPACK/lapack)
 
-To build, just run:
+Certain Makefiles rely on [Faasm](https://github.com/lsds/faasm) being checked
+out at `/usr/local/code/faasm`. 
 
-```
-make
-```
+Builds are usually done with the Faasm CLI (see the [BLAS
+docs](https://github.com/lsds/faasm/tree/master/docs/blas.md)).
 
+Note that CBLAS sources aren't part of the default CLAPACK so they have been
+downloaded from https://www.netlib.org/clapack/cblas.tgz and included in this
+repo.
