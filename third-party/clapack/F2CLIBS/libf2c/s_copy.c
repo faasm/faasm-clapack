@@ -11,10 +11,12 @@ extern "C" {
 
 /* assign strings:  a = b */
 
+// NOTE - s_copy returns int in clapack
+
 #ifdef KR_headers
 VOID s_copy(a, b, la, lb) register char *a, *b; ftnlen la, lb;
 #else
-void s_copy(register char *a, register char *b, ftnlen la, ftnlen lb)
+int s_copy(register char *a, register char *b, ftnlen la, ftnlen lb)
 #endif
 {
 	register char *aend, *bend;
@@ -51,6 +53,8 @@ void s_copy(register char *a, register char *b, ftnlen la, ftnlen lb)
 		while(a < aend)
 			*a++ = ' ';
 		}
+
+    return 0;
 	}
 #ifdef __cplusplus
 }
