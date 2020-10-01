@@ -7,8 +7,12 @@ OBJS = $(patsubst %.c,%.o,$(SRCS))
 all: $(CBLASLIB)
 
 $(CBLASLIB): $(OBJS)
+ifeq ($(LIBEXT), .a)
 	$(ARCH) $(ARCHFLAGS) $@ $(OBJS)
 	$(RANLIB) $@
+else
+	$(CC) $(LDFLAGS) $(OBJS) -o $@
+endif
 
 %.o: %.c 
 	$(CC) $(CFLAGS) -c $< -o $@

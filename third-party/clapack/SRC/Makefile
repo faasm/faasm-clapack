@@ -369,9 +369,12 @@ ALLOBJ=$(SLASRC) $(DLASRC) $(CLASRC) $(ZLASRC) $(SCLAUX) $(DZLAUX)	\
 	$(ALLAUX)
 
 ../$(LAPACKLIB): $(ALLOBJ) $(ALLXOBJ)
-	# $(CC) $(LDFLAGS) $(ALLOBJ) $(ALLXOBJ) -o $@
+ifeq ($(LIBEXT), ".a")
 	$(ARCH) $(ARCHFLAGS) $@ $(ALLOBJ) $(ALLXOBJ)
 	$(RANLIB) $@
+else
+	$(CC) $(LDFLAGS) $(ALLOBJ) $(ALLXOBJ) -o $@
+endif
 
 single: $(SLASRC) $(ALLAUX) $(SCLAUX) 
 	$(ARCH) $(ARCHFLAGS) ../$(LAPACKLIB) $(SLASRC) $(ALLAUX) \

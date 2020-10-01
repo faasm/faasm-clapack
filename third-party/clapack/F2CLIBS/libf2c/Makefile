@@ -56,9 +56,8 @@ I77 =	backspac.o close.o dfe.o dolio.o due.o endfile.o err.o\
 QINT =	pow_qq.o qbitbits.o qbitshft.o ftell64_.o
 TIME =	dtime_.o etime_.o
 
-# Change here which lib we're building
-# LIBNAME = libf2c.a
-LIBNAME = libf2c.so
+# Main library output
+LIBNAME = libf2c$(LIBEXT)
 
 # If you get an error compiling dtime_.c or etime_.c, try adding
 # -DUSE_CLOCK to the CFLAGS assignment above; if that does not work,
