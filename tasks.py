@@ -1,7 +1,8 @@
 import os
 
 from multiprocessing import cpu_count
-from os.path import join, dirname, realpath
+from os.path import join, dirname, realpath, exists
+from shutil import rmtree
 from subprocess import run
 from copy import copy
 
@@ -10,8 +11,41 @@ from invoke import task
 
 PROJ_ROOT = dirname(realpath(__file__))
 THIRD_PARTY_DIR = join(PROJ_ROOT, "third-party")
+SYSROOT = "/usr/local/faasm/llvm-sysroot"
+SYSROOT_LIBS = join(SYSROOT, "lib", "wasm32-wasi")
+HEADERS_DIRS = [join(SYSROOT, "include", "clapack")]
+
+INSTALLED_LIBS = [
+    "libcblas",
+    "libf2c",
+    "libblas",
+    "liblapack",
+]
 
 N_CPUS = int(cpu_count()) - 1
+
+
+@task
+def uninstall(ctx):
+    """
+    Removes all installed files
+    """
+    for headers_dir in HEADERS_DIRS:
+        if exists(headers_dir):
+            print("Removing headers {}".format(headers_dir))
+            rmtree(headers_dir)            
+
+    for lib_name in INSTALLED_LIBS:
+        static_path = join(SYSROOT_LIBS, "{}.a".format(lib_name))
+        shared_path = join(SYSROOT_LIBS, "{}.so".format(lib_name))
+
+        if exists(static_path):
+            print("Removing static lib {}".format(static_path))
+            os.remove(static_path)
+
+        if exists(shared_path):
+            print("Removing shared lib {}".format(shared_path))
+            os.remove(shared_path)
 
 
 @task
