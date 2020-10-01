@@ -1,6 +1,6 @@
 TOPDIR=..
 include $(TOPDIR)/make.inc
-F2CLIB = $(TOPDIR)/F2CLIBS/libf2c.a
+F2CLIB = $(TOPDIR)/F2CLIBS/libf2c$(LIBEXT)
 
 .SUFFIXES : .o .c 
 all:  testlsame testslamch testdlamch testsecond testdsecnd testieee testversion 

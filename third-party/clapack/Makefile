@@ -23,10 +23,10 @@ lib: f2clib blaslib cblaslib lapacklib
 clean: cleanlib cleantesting cleanblas_testing 
 
 install: 
-	cp $(LAPACKLIB) $(INSTALL_DIR)/liblapack.a
-	cp blas$(PLAT).a $(INSTALL_DIR)/libblas.a
-	cp cblas$(PLAT).a $(INSTALL_DIR)/libcblas.a
-	cp F2CLIBS/libf2c.a $(INSTALL_DIR)/libf2c.a
+	cp $(LAPACKLIB) $(INSTALL_DIR)/liblapack$(LIBEXT)
+	cp blas$(PLAT)$(LIBEXT) $(INSTALL_DIR)/libblas$(LIBEXT)
+	cp cblas$(PLAT)$(LIBEXT) $(INSTALL_DIR)/libcblas$(LIBEXT)
+	cp F2CLIBS/libf2c$(LIBEXT) $(INSTALL_DIR)/libf2c$(LIBEXT)
 	mkdir -p $(INCLUDE_DIR)/clapack
 	cp INCLUDE/* $(INCLUDE_DIR)/clapack/
 	cp cblas/cblas.h $(INCLUDE_DIR)/clapack/
@@ -101,7 +101,9 @@ cleanlib:
 	( cd TESTING/MATGEN; $(MAKE) clean )
 	( cd F2CLIBS/libf2c; $(MAKE) clean )
 	( cd F2CLIBS; rm -f *.a)
+	( cd F2CLIBS; rm -f *.so)
 	( rm -f *.a )
+	( rm -f *.so )
 
 cleanblas_testing:	
 	( cd BLAS/TESTING; $(MAKE) -f Makeblat1 clean )
