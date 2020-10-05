@@ -13,6 +13,11 @@ INCLUDE_DIR=$(WASM_SYSROOT)/include
 
 include make.inc
 
+$(info $$LIBEXT is ${LIBEXT})
+$(info F2CLIB = ${F2CLIB})
+$(info CBLASLIB = ${CBLASLIB})
+$(info LAPACKLIB = ${LAPACKLIB})
+
 all: f2clib lapack_install lib 
 #all: f2clib lapack_install lib lapack_testing blas_testing variants_testing
 

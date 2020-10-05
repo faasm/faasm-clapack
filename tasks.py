@@ -33,7 +33,7 @@ def uninstall(ctx):
     for headers_dir in HEADERS_DIRS:
         if exists(headers_dir):
             print("Removing headers {}".format(headers_dir))
-            rmtree(headers_dir)            
+            rmtree(headers_dir)
 
     for lib_name in INSTALLED_LIBS:
         static_path = join(SYSROOT_LIBS, "{}.a".format(lib_name))

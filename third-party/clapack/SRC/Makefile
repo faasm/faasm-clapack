@@ -369,7 +369,7 @@ ALLOBJ=$(SLASRC) $(DLASRC) $(CLASRC) $(ZLASRC) $(SCLAUX) $(DZLAUX)	\
 	$(ALLAUX)
 
 ../$(LAPACKLIB): $(ALLOBJ) $(ALLXOBJ)
-ifeq ($(LIBEXT), ".a")
+ifeq ($(LIBEXT), .a)
 	$(ARCH) $(ARCHFLAGS) $@ $(ALLOBJ) $(ALLXOBJ)
 	$(RANLIB) $@
 else
