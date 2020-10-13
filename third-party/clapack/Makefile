@@ -5,8 +5,8 @@
 #
 
 TOPDIR=$(abspath .)
-FAASM_ROOT=/usr/local/code/faasm
-include $(FAASM_ROOT)/third-party/faasm-toolchain/Makefile.envs
+TOOLCHAIN_ROOT=$(TOPDIR)/../../../..
+include $(TOOLCHAIN_ROOT)/Makefile.envs
 
 INSTALL_DIR=$(WASM_SYSROOT)/lib/wasm32-wasi
 INCLUDE_DIR=$(WASM_SYSROOT)/include
