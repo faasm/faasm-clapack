@@ -17,22 +17,6 @@ repo.
 
 ## Building
 
-### CLAPACK
+See the [Faasm toolchain](https://github.com/faasm/faasm-toolchain/) where this
+repository is built.
 
-To build:
-
-```
-# Static libraries (with a clean)
-inv clapack --clean
-
-# Dynamic libraries (with a clean)
-inv clapack --shared --clean
-```
-
-### LAPACKE
-
-To build:
-
-```
-inv lapacke
-```
