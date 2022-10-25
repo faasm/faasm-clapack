@@ -9,7 +9,7 @@ LD=$(WASM_CC)
 LIBEXT ?= .a
 
 # Different link flags for different types of modules
-ifeq ($(LIBEXT), .so) 
+ifeq ($(LIBEXT), .so)
     # Shared libs
     _FLAGS=$(WASM_CFLAGS_NO_QUOTES) \
         -D__wasi__ \
@@ -17,18 +17,19 @@ ifeq ($(LIBEXT), .so)
         -fPIC \
         --target=wasm32-unknown-emscripten \
         -Xlinker --no-entry \
+        -I$(TOPDIR)/INCLUDE
+    LDFLAGS=$(_FLAGS) \
+        -Xlinker --no-entry \
         -Xlinker --shared \
         -Xlinker --export-all \
-        -Xlinker --no-gc-sections \
-        -I$(TOPDIR)/INCLUDE 
-    LDFLAGS=$(_FLAGS)
+        -Xlinker --no-gc-sections
     CFLAGS=$(_FLAGS)
 else
-    _FLAGS=$(WASM_CFLAGS_NO_QUOTES) \
+    _FLAGS=$(WASM_CFLAGS_NO_QUOTES)
+    LDFLAGS=$(_FLAGS) \
         -Xlinker --stack-first \
         -Xlinker --no-entry
-    LDFLAGS=$(_FLAGS) 
-    CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE 
+    CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE
 endif
 
 SHELL = /bin/sh
