@@ -18,17 +18,11 @@ ifeq ($(LIBEXT), .so)
         --target=wasm32-unknown-emscripten \
         -Xlinker --no-entry \
         -I$(TOPDIR)/INCLUDE
-    LDFLAGS=$(_FLAGS) \
-        -Xlinker --no-entry \
-        -Xlinker --shared \
-        -Xlinker --export-all \
-        -Xlinker --no-gc-sections
+    LDFLAGS=$(WASM_SHARED_FLAGS_NO_QUOTES)
     CFLAGS=$(_FLAGS)
 else
     _FLAGS=$(WASM_CFLAGS_NO_QUOTES)
-    LDFLAGS=$(_FLAGS) \
-        -Xlinker --stack-first \
-        -Xlinker --no-entry
+    LDFLAGS=$(WASM_LDFLAGS_NO_QUOTES)
     CFLAGS=$(_FLAGS) -O3 -I$(TOPDIR)/INCLUDE
 endif
 
